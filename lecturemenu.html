@@ -1,72 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    
     <title>Lecturer Menu</title>
-<style>
-body {
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+    <link href="lecturemenu.css" type="text/css" rel="stylesheet" />
 
-.overlay {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-    overflow-x: hidden;
-    transition: 0.5s;
-}
-
-.overlay-content {
-    position: relative;
-    top: 25%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-}
-
-
-
-</style>
 </head>
+    
 
 <body>
 
-    <h1>Lecturer Menu</h1>
+    <div class="container">
+        <div class="header">
+        CSC3002S
+        </div>
+    </div>
+
+    <!-- STATIC MAIN MENU -->
+    <div id="mainNav" class="sidenav">
+    <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
+        <div class="header"> </div>
+        <div class="logo">Lec Game Lite</div>
+        <div class="form-container">
+
+            <p>Topic</p>
+
+            <div class="overlay-content">
+            <form action="../answercheck.php" method="post">
+                <a href="#" name="option" value="question" onclick="openAnsNav()";">New Question</a>
+                <a href="#" name="option" value="leaderboard" onclick="openAttNav()";">View Attendance</a>
+                <a href="#" name="option" value="response"  onclick="openResNav();">View Responses</a>
+                <a href="welcome_page.html" id="logout" onclick="alert('You have been logged out.')">Logout</a>
+            </form>
+            </div>
+           
+        </div>
+    </div>
+
+    <!-- DYNAMIC ANSWER QUIZ MENU -->
+    <div id="ansNav" class="sidepop">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeAnsNav()">&times;</a>
+
+            <div class="overlay-content">
+
+            <h2>Add Quiz</h2>
+            <!--<div class="quizContainer"> -->
+                <form action="../question.php" method="post"">
+                    <label for="subject">Question</label> 
+
+                    <textarea id="subject" name="subject" placeholder="Write Question.." style="height:150px"></textarea><br>
+
+                    <label for="option1">1st Option</label>
+                    <input type="text" id="option1" name="option1" placeholder="1st answer option.."><br>
+
+                    <label for="option2">2nd Option</label>
+                    <input type="text" id="option2" name="option2" placeholder="2nd answer option.."><br>
+
+                    <label for="option3">3rd Option</label>
+                    <input type="text" id="option3" name="option3" placeholder="3rd answer option.."><br>
+
+                    <input type="submit" value="Submit">
+                </form>
+           <!-- </div> -->
+        </div>
+           
+    </div>
+
+    <!-- DYNAMIC RESPONSE PAGE NAV -->
+    <div id="resNav" class="sidepop">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeResNav()">&times;</a>
+
+            <div class="overlay-content">
+            <h2>Choose Response</h2>
+            
+
+            
+            </div>
+           
+    </div>
+
+    <!-- DYNAMIC ATTENDANCE PAGE NAV -->
+    <div id="attNav" class="sidepop">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeAttNav()">&times;</a>
+
+            <div class="overlay-content">
+            <h2>See Attendance</h2>
+            
+
+            
+            </div>
+           
+    </div>
+
+    <script>
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+/*for Answer quiz*/
+function openAnsNav() {
+    document.getElementById("ansNav").style.width = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+/*for Answer quiz*/
+function closeAnsNav() {
+    document.getElementById("ansNav").style.width = "0";
+    document.body.style.backgroundColor = "white";
+}
+
+/*for ViewLeaderboard*/
+function openResNav() {
+    document.getElementById("resNav").style.width = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+/*for ViewLeaderboard*/
+function closeResNav() {
+    document.getElementById("resNav").style.width = "0";
+    document.body.style.backgroundColor = "white";
+}
+
+/*for ViewLeaderboard*/
+function openAttNav() {
+    document.getElementById("attNav").style.width = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+/*for ViewLeaderboard*/
+function closeAttNav() {
+    document.getElementById("attNav").style.width = "0";
+    document.body.style.backgroundColor = "white";
+}
+</script>
+
+
+</body>
+</html>
+
+<!--<h1>Lecturer Menu</h1>
         <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
@@ -80,16 +154,4 @@ body {
      </div>
     </div>
 
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
-
-<script>
-function openNav() {
-    document.getElementById("myNav").style.width = "100%";
-}
-
-function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
-}
-</script>
-</body>
-</html>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span> -->
