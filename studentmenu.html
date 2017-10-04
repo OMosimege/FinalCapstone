@@ -2,101 +2,92 @@
 <html>
 <head>
         <title>Student Menu</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
         <link href="studentmenu.css" type="text/css" rel="stylesheet" />
-        <style>
-            body {
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-}
-
-.overlay {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-    overflow-x: hidden;
-    transition: 0.5s;
-}
-
-.overlay-content {
-    position: relative;
-    top: 25%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-}
-
-
-
-        </style>
+           
 </head>
 <body>
 
-    <h1>Student Menu</h1>
-
-    <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="overlay-content">
-            <form action="../login/options.php" method="post">
-                <a href="#" name="option" value="answer" onclick="form.submit();">Answer Quiz</a>
-                <a href="#" name="option" value="student_attendance" onclick="form.submit();">Check Attendance</a>
-                <a href="#" name="option" value="leaderboard" onclick="form.submit();">View Leaderboard</a>
-                <a href="Welcome.html" id="logout" onclick="alert('You have been logged out.')">Logout</a>
-            </form>
+    <div class="container">
+        <div class="header">
+        CSC3002S
         </div>
     </div>
 
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
+    <!-- STATIC MAIN MENU -->
+    <div id="mainNav" class="sidenav">
+    <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
+        <div class="header"> </div>
+        <div class="logo">Lec Game Lite</div>
+        <div class="form-container">
+
+            <p>Topic</p>
+            <p>Points</p>
+            <p>Attendance</p>
+
+            <div class="overlay-content">
+            <form action="../login/options.php" method="post">
+                <a href="#" name="option" value="answer" onclick="openAnsNav()";">Answer Quiz</a>
+                <a href="#" name="option" value="leaderboard" onclick="openLeadNav()";">View Leaderboard</a>
+                <a href="welcome_page.html" id="logout" onclick="alert('You have been logged out.')">Logout</a>
+            </form>
+            </div>
+           
+        </div>
+    </div>
+
+    <!-- DYNAMIC ANSWER QUIZ MENU -->
+    <div id="answerNav" class="sidepop">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeAnsNav()">&times;</a>
+
+            <div class="overlay-content">
+            <h2>Choose answer</h2>
+            <form action="../php/answercheck.php" class= "form" method="post">
+                <input type="radio" name="choice" value="A">A<br>
+                <input type="radio" name="choice" value="B">B<br>
+                <input type="radio" name="choice" value="C">C<br><br><br>
+                <input type="submit" class="submitBtn" value="Submit">
+            </form>
+
+            
+            </div>
+           
+    </div>
+   
+
+
+    
+
+   <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>-->
 
 <script>
-function openNav() {
-    document.getElementById("myNav").style.width = "100%";
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+/*for Answer quiz*/
+function openAnsNav() {
+    document.getElementById("answerNav").style.width = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
-function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+/*for Answer quiz*/
+function closeAnsNav() {
+    document.getElementById("answerNav").style.width = "0";
+    document.body.style.backgroundColor = "white";
+}
+
+/*for ViewLeaderboard*/
+function openLeadNav() {
+    document.getElementById("leadNav").style.width = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+/*for ViewLeaderboard*/
+function closeLeadNav() {
+    document.getElementById("leadNav").style.width = "0";
+    document.body.style.backgroundColor = "white";
 }
 </script>
-        <!--<h1>Student Menu</h1><br>
-        <form action="../login/options.php" method="post"> 
-            <input type="radio" name="option" value="answer" checked> <b>Answer Question</b><br><br><br>
-            <input type="radio" name="option" value="student_attendance"> <b>View Your Attendance</b><br><br><br>
-            <input type="radio" name="option" value="leaderboard"> <b>Check Leaderboard</b><br><br><br>
-            <input type="submit" value="Submit"><br><br>
-        </form>
-        <button type="button" onclick="alert('You have been logged out.')">Logout</button>-->
 </body>
 </html>
